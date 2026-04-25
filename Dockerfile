@@ -1,10 +1,10 @@
-FROM eclipse-temurin:17-jdk-slim
+FROM openjdk:17-jdk-slim
 
 
 WORKDIR /app
 
 
-COPY build/libs/*-SNAPSHOT.jar app.jar
+COPY build/libs/*.jar app.jar
 
 
 EXPOSE 8081
