@@ -1,0 +1,27 @@
+services:
+  app:
+    image: jibrilgy/devops-app:latest
+    container_name: devops-app
+    restart: always
+    ports:
+      - "80:8081"
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/devops_db?createDatabaseIfNotExist=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=mysql
+
+  db:
+    image: mysql:8.0
+    container_name: devops-db
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=devops_db
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
