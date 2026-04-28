@@ -18,7 +18,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
-}
+}a
 
 repositories {
     mavenCentral()
@@ -27,8 +27,10 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Bunu runtimeOnly yerine implementation yap:
+    implementation 'com.mysql:mysql-connector-j'
+
     compileOnly 'org.projectlombok:lombok'
-    runtimeOnly 'com.mysql:mysql-connector-j'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'

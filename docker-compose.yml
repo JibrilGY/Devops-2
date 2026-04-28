@@ -15,13 +15,11 @@ services:
   db:
     image: mysql:8.0
     container_name: devops-db
+    restart: always
     ports:
       - "3307:3306"
     environment:
       - MYSQL_ROOT_PASSWORD=mysql
       - MYSQL_DATABASE=devops_db
     volumes:
-      - db_data:/var/lib/mysql
-
-volumes:
-  db_data:
+      - ./scott.sql:/docker-entrypoint-initdb.d/scott.sql
