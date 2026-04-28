@@ -11,6 +11,8 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/devops_db?createDatabaseIfNotExist=true&serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false
       - SPRING_DATASOURCE_USERNAME=root
       - SPRING_DATASOURCE_PASSWORD=mysql
+    networks:
+      - devops-network
 
   db:
     image: mysql:8.0
@@ -23,3 +25,9 @@ services:
       - MYSQL_DATABASE=devops_db
     volumes:
       - ./scott.sql:/docker-entrypoint-initdb.d/scott.sql
+    networks:
+      - devops-network
+
+networks:
+  devops-network:
+    driver: bridge
